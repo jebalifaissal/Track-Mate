@@ -76,15 +76,18 @@ class TrackMateApi {
     'deliveryLongitude': deliveryLongitude,
   });
 
-  Future<void> acceptOrder(String id) async =>
-      _send('POST', '/api/orders/${Uri.encodeComponent(id)}/accept');
+  Future<void> acceptOrder(String id) async {
+    await _send('POST', '/api/orders/${Uri.encodeComponent(id)}/accept');
+  }
 
-  Future<void> updateStatus(String id, String status) async =>
-      _send('PATCH', '/api/orders/${Uri.encodeComponent(id)}/status', body: {'status': status});
+  Future<void> updateStatus(String id, String status) async {
+    await _send('PATCH', '/api/orders/${Uri.encodeComponent(id)}/status', body: {'status': status});
+  }
 
-  Future<void> sendLocation(String id, double lat, double lng, {double? heading, double? speed}) async =>
-      _send('POST', '/api/orders/${Uri.encodeComponent(id)}/location',
-          body: {'latitude': lat, 'longitude': lng, 'heading': heading, 'speed': speed});
+  Future<void> sendLocation(String id, double lat, double lng, {double? heading, double? speed}) async {
+    await _send('POST', '/api/orders/${Uri.encodeComponent(id)}/location',
+        body: {'latitude': lat, 'longitude': lng, 'heading': heading, 'speed': speed});
+  }
 
   Future<Map<String, dynamic>> tracking(String id) async =>
       _send('GET', '/api/orders/${Uri.encodeComponent(id)}/location');
