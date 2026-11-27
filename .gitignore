@@ -43,3 +43,8 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Cloudflare local state and secrets
+.wrangler/
+**/.wrangler/
+trackmate/.dev.vars
