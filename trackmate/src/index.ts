@@ -146,8 +146,10 @@ async function handle(request: Request, env: Env): Promise<Response> {
         "INSERT INTO users (id, full_name, email, phone, password_hash, is_active, created_at, updated_at) VALUES (?, ?, ?, ?, ?, 1, datetime('now'), datetime('now'))",
       ).bind(id, fullName, email, phone, passwordHash).run();
       await env.DB.prepare("INSERT INTO user_roles (user_id, role) VALUES (?, ?)").bind(id, role).run();
-      const token = await createSession(id, env);
-      return json({ token, user: { id, full_name: fullName, email, phone, role } }, 201, request);
+      return json({
+        message: "Compte créé avec succès. Connectez-vous pour continuer.",
+        user: { id, full_name: fullName, email, phone, role },
+      }, 201, request);
     } catch (error) {
       const message = String(error);
       if (message.includes("UNIQUE")) return fail("Cet e-mail ou numéro est déjà utilisé.", 409, request);
