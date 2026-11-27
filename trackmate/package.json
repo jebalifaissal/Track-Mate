@@ -1,0 +1,16 @@
+{
+  "name": "trackmate-api",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "types": "wrangler types",
+    "check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20261127.0",
+    "typescript": "^5.9.3",
+    "wrangler": "^4.169.0"
+  }
+}
