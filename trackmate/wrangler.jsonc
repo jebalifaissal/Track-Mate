@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "trackmate-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-27",
+  "observability": { "enabled": true },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "trackmate",
+      "database_id": "8a56b3f4-0335-467e-9ecb-704bb1a32c9a",
+      "migrations_dir": "migrations"
+    }
+  ]
+}
