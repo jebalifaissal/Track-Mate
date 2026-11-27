@@ -32,7 +32,6 @@ class TrackMateApi {
       'fullName': fullName, 'email': email, 'password': password,
       'role': role, if (phone != null && phone.isNotEmpty) 'phone': phone,
     }, authenticated: false);
-    await _saveSession(data);
     return data;
   }
 
