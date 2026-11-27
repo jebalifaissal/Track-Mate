@@ -124,7 +124,7 @@ async function notifyDrivers(env: Env, orderId: string): Promise<void> {
 async function handle(request: Request, env: Env): Promise<Response> {
   const url = new URL(request.url);
   const path = url.pathname.replace(/\/+$/, "") || "/";
-  if (request.method === "OPTIONS") return json({}, 204, request);
+  if (request.method === "OPTIONS") return json({}, 200, request);
   if (path === "/api/health" && request.method === "GET") return json({ ok: true, service: "trackmate-api" }, 200, request);
 
   if (path === "/api/auth/register" && request.method === "POST") {
