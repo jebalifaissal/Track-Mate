@@ -1,30 +1,25 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
+import 'package:delivery_boy_app/screen/commercial_home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:delivery_boy_app/main.dart';
-
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('Track-Mate commercial dashboard renders', (tester) async {
+    await tester.pumpWidget(const MaterialApp(home: CommercialHomeScreen()));
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    expect(find.text('Track-Mate'), findsOneWidget);
+    expect(find.text('Accueil'), findsOneWidget);
+    expect(find.text('Commandes'), findsOneWidget);
+    expect(find.text('Suivi'), findsOneWidget);
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  testWidgets('role menu exposes customer and merchant spaces', (tester) async {
+    await tester.pumpWidget(const MaterialApp(home: CommercialHomeScreen()));
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    await tester.tap(find.text('Livreur'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Espace client'), findsOneWidget);
+    expect(find.text('Espace commerçant'), findsOneWidget);
+    expect(find.text('Espace livreur'), findsOneWidget);
   });
 }
